@@ -13,16 +13,8 @@
 
 # Run the following command to create a virtual environment in the project root.
 
-### On Windows, Use PowerShell (not cmd) - don't include the #:
-# py -3.11 -m venv .venv
-
 ### On Mac  - don't include the #:
 # brew install python@3.11
-# python3 -m venv .venv
-
-### On Linux/WSL - don't include the #:
-# sudo apt update
-# sudo apt install python3.11 python3.11-venv
 # python3.11 -m venv .venv
 
 ### If VS Code asks: We noticed a new environment has been created. 
@@ -35,9 +27,6 @@
 
 # ALWAYS activate the .venv before working on the project.
 # Activate whenever you open a new terminal. 
-
-### Windows PowerShell Command (don't include the #):
-# .\.venv\Scripts\activate
 
 ### Mac/Linux Command (don't include the #):
 # source .venv/bin/activate
@@ -56,13 +45,9 @@
 # When you identify a new package you want to use, 
 # Just update the list below and re-run this command. 
 
-### Windows Command (don't include the #):
-# py -m pip install --upgrade pip setuptools wheel
-# py -m pip install -r requirements.txt
-
 ### Mac/Linux Command (don't include the #):
-# python3 -m pip install --upgrade pip setuptools wheel
-# python3 -m pip install --upgrade -r requirements.txt
+# python3.11 -m pip install --upgrade pip setuptools wheel
+# python3.11 -m pip install --upgrade -r requirements.txt
 
 # When you identify a new package you want to use, 
 # Just update the list below and re-run the install command. 
@@ -72,7 +57,7 @@
 # ======================================================
 # VS Code needs our populated .venv to interpret our files correctly.
 # To set the VS Code Interpreter:
-# 1. Open the Command Palette: Press Ctrl+Shift+P (Windows/Linux) or Cmd+Shift+P (Mac).
+# 1. Open the Command Palette: Press Cmd+Shift+P (Mac).
 # 2. Search for "Python: Select Interpreter":
 # 3. Type Python: Select Interpreter in the Command Palette search bar and select it from the dropdown.
 # 4. Choose an Interpreter - A list of available Python environments will appear.
