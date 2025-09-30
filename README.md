@@ -281,3 +281,21 @@ See the [LICENSE](LICENSE.txt) file for more.
 - Ruff by Astral Software (Linter + Formatter)
 - **SQLite Viewer by Florian Klampfer**
 - WSL by Microsoft (on Windows Machines)
+
+### Custom Consumer: `consumer_joannafarris`
+
+**Ingestion:** Kafka topic from the provided producer.  
+**Insight stored per message:** a quick `tone` tag  
+- `question` (contains `?`)  
+- `excited` (>= 2 exclamation marks OR sentiment ≥ 0.70)  
+- `plain` (otherwise)
+
+**Why this is interesting:** cheap proxy for intent/energy; easy to aggregate by author/category/time.
+
+**Stored fields:** `ts, author, tone, exclamations, qmarks, message_length, category, kafka_topic, kafka_partition, kafka_offset` → SQLite at `data/buzz.sqlite`, table `message_tone`.
+
+#### How to run
+1. Start Kafka (per course setup).
+2. Producer (unchanged):
+   ```bash
+   python3 -m producers.producer_case
