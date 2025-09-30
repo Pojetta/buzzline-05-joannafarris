@@ -39,20 +39,6 @@ Additional information about our standard professional Python project workflow i
     
 ---
 
-## Task 0. If Windows, Start WSL
-
-Launch WSL. Open a PowerShell terminal in VS Code. Run the following command:
-
-```powershell
-wsl
-```
-
-You should now be in a Linux shell (prompt shows something like `username@DESKTOP:.../repo-name$`).
-
-Do **all** steps related to starting Kafka in this WSL window.
-
----
-
 ## Task 1. Start Kafka (using WSL if Windows)
 
 In P2, you downloaded, installed, configured a local Kafka service.
@@ -70,6 +56,7 @@ cd ~/kafka
 bin/kafka-server-start.sh config/kraft/server.properties
 ```
 
+
 **Keep this terminal open!** Kafka is running and needs to stay active.
 
 For detailed instructions, see [SETUP_KAFKA](https://github.com/denisecase/buzzline-02-case/blob/main/SETUP_KAFKA.md) from Project 2. 
@@ -84,21 +71,6 @@ Open your project in VS Code and use the commands for your operating system to:
 2. Activate the virtual environment.
 3. Upgrade pip and key tools. 
 4. Install from requirements.txt.
-
-### Windows
-
-Open a new PowerShell terminal in VS Code (Terminal / New Terminal / PowerShell).
-**Python 3.11** is required for Apache Kafka. 
-
-```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-py -m pip install --upgrade pip wheel setuptools
-py -m pip install --upgrade -r requirements.txt
-```
-
-If you get execution policy error, run this first:
-`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 ### Mac / Linux
 
@@ -123,12 +95,6 @@ pytest -v
 
 Then run the `verify_emitters.py` script as a module to check that we can emit to all four types. 
 For the Kakfa sink to work, the Kafka service must be running. 
-
-### Windows Powershell
-
-```shell
-py -m verify_emitters
-```
 
 ### Mac / Linux
 
@@ -158,11 +124,6 @@ Use the commands below to activate .venv, and start the producer.
 
 Windows:
 
-```shell
-.\.venv\Scripts\Activate.ps1
-py -m producers.producer_case
-```
-
 Mac/Linux:
 ```zsh
 source .venv/bin/activate
@@ -184,17 +145,6 @@ You have options.
 In VS Code, open a NEW terminal in your root project folder. 
 Use the commands below to activate .venv, and start the consumer. 
 
-Windows:
-```shell
-.\.venv\Scripts\Activate.ps1
-py -m consumers.kafka_consumer_case
-OR
-py -m consumers.file_consumer_case
-OR
-py -m consumers.sqlite_consumer_case.py
-OR
-py -m consumers.duckdb_consumer_case.py
-```
 
 Mac/Linux:
 ```zsh
@@ -267,19 +217,6 @@ What files are in the consumers folder?
 ---
 
 ## Verify DuckDB (Terminal Commands)
-
-Windows PowerShell
-
-```shell
-# count rows
-duckdb .\data\buzz.duckdb "SELECT COUNT(*) FROM streamed_messages;"
-
-# peek
-duckdb .\data\buzz.duckdb "SELECT * FROM streamed_messages ORDER BY id DESC LIMIT 10;"
-
-# live analytics
-duckdb .\data\buzz.duckdb "SELECT category, AVG(sentiment) FROM streamed_messages GROUP BY category ORDER BY AVG(sentiment) DESC;"
-```
 
 macOS/Linux/WSL
 

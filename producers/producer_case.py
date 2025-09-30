@@ -200,7 +200,7 @@ def main() -> None:
 
             # --- SQLite ---
             # Uncomment to enable SQLite sink:
-            # emit_to_sqlite(message, db_path=sqlite_path)
+            emit_to_sqlite(message, db_path=sqlite_path)
 
             # --- DuckDB ---
             # Uncomment to enable DuckDB sink:
